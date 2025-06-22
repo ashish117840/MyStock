@@ -1,22 +1,28 @@
-const express = require("express");
 const dotenv = require("dotenv");
-const mongoose = require("mongoose");
-
-// Load environment variables
+// Load env
 dotenv.config();
-const app = express();
+
+const express = require("express");
+const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
+
+
 const { HoldingsModel } = require("./model/HoldingsModel");
+
 const { PositionsModel } = require("./model/PositionsModel");
 const { OrdersModel } = require("./model/OrdersModel");
 
 const PORT = process.env.PORT || 3002;
 const uri = process.env.MONGO_URL;
 
+const app = express();
+
 app.use(cors());
 app.use(bodyParser.json());
+
+
 
 // app.get("/addHoldings", async (req, res) => {
 //   let tempHoldings = [
@@ -210,8 +216,19 @@ app.post("/newOrder", async (req, res) => {
   res.send("Order saved!");
 });
 
-app.listen(PORT, () => {
-  console.log("App started");
-  mongoose.connect(uri);
-  console.log("DB connected");
+app.post("/newOrder", async (req, res) => {
+  try {
+    let newOrder = new OrdersModel({
+      name: req.body.name,
+      qty: req.body.qty,
+      price: req.body.price,
+      mode: req.body.mode,
+    });
+
+    await newOrder.save();  // Await the save
+    res.send("Order saved!");
+  } catch (err) {
+    console.error("Error saving order", err);
+    res.status(500).send("Error saving order");
+  }
 });
