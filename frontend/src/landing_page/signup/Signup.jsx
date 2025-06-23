@@ -11,8 +11,14 @@ const SignUp = () => {
   const handleSignup = async (event) => {
     event.preventDefault();
     try {
-      const res = await axios.post("/api/auth/signup", { email, password });
+      const res = await axios.post("https://my-stock-backend.vercel.app", {
+        email,
+        password,
+      });
       localStorage.setItem("token", res.data.token);
+
+      // Redirect to dashboard
+      window.location.href = "https://my-stock-dashboard.vercel.app";
       alert("Signup successful");
       navigate("/dashboard");
     } catch (error) {

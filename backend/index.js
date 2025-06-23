@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-
+const authRoutes = require("./routes/authRoutes");
 
 const { HoldingsModel } = require("./model/HoldingsModel");
 
@@ -21,6 +21,8 @@ const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
+
+app.use("/api/auth", authRoutes);
 
 
 
@@ -216,19 +218,13 @@ app.post("/newOrder", async (req, res) => {
   res.send("Order saved!");
 });
 
-app.post("/newOrder", async (req, res) => {
+app.listen(PORT, async () => {
+  console.log(`Server is listening on port ${PORT}`);
   try {
-    let newOrder = new OrdersModel({
-      name: req.body.name,
-      qty: req.body.qty,
-      price: req.body.price,
-      mode: req.body.mode,
-    });
-
-    await newOrder.save();  // Await the save
-    res.send("Order saved!");
+    await mongoose.connect(uri);
+    console.log("Connected to DB");
   } catch (err) {
-    console.error("Error saving order", err);
-    res.status(500).send("Error saving order");
+    console.error("DB connection failed", err);
+    process.exit(1);
   }
 });
