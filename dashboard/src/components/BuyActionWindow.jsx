@@ -12,12 +12,19 @@ const BuyActionWindow = ({ uid }) => {
   const [stockPrice, setStockPrice] = useState(0.0);
 
   const handleBuyClick = () => {
-    axios.post("https://my-stock-backend.onrender.com/newOrder", {
-      name: uid,
-      qty: stockQuantity,
-      price: stockPrice,
-      mode: "BUY",
-    });
+    axios
+      .post("https://my-stock-backend.onrender.com/newOrder", {
+        name: uid,
+        qty: stockQuantity,
+        price: stockPrice,
+        mode: "BUY",
+      })
+      .then(() => {
+        window.location.reload(); // 🔁 Refresh to update holdings after placing order
+      })
+      .catch((err) => {
+        console.error("Failed to place order:", err);
+      });
 
     GeneralContext.closeBuyWindow();
   };
