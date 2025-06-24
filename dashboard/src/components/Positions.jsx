@@ -8,7 +8,7 @@ const Positions = () => {
   const [allPositions , setAllPositions] = useState([]);
 
   useEffect(()=>{
-   axios.get("https://my-stock-backend.vercel.app/allPositions").then((res)=>{
+   axios.get("https://my-stock-backend.onrender.com").then((res)=>{
     console.log(res.data);
     setAllPositions(res.data);
    });
