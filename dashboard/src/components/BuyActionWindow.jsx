@@ -20,13 +20,14 @@ const BuyActionWindow = ({ uid }) => {
         mode: "BUY",
       })
       .then(() => {
-        window.location.reload(); // 🔁 Refresh to update holdings after placing order
+        GeneralContext.closeBuyWindow();
+        window.location.reload(); 
       })
       .catch((err) => {
         console.error("Failed to place order:", err);
       });
 
-    GeneralContext.closeBuyWindow();
+    
   };
 
   const handleCancelClick = () => {

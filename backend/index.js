@@ -5,7 +5,6 @@ dotenv.config();
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const cors = require("cors");
 
 const authRoutes = require("./routes/authRoutes");
 
@@ -19,12 +18,24 @@ const uri = process.env.MONGO_URL;
 
 const app = express();
 
-app.use(cors());
+const cors = require("cors");
+const corsOptions = {
+  origin: [
+    "https://my-stock-dashboard.vercel.app",
+    "https://my-stock-frontend.vercel.app",
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type"],
+};
+
+app.use(cors(corsOptions));
+
+// Handle preflight requests for all routes
+app.options("*", cors(corsOptions));
+
 app.use(bodyParser.json());
 
 app.use("/api/auth", authRoutes);
-
-
 
 // app.get("/addHoldings", async (req, res) => {
 //   let tempHoldings = [
