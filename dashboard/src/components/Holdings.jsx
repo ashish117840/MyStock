@@ -1,33 +1,37 @@
-import React , {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { VerticalGraph } from "./VerticalGraph";
 
 // import { holdings } from "../data/data";
 
 const Holdings = () => {
-
   const [allHoldings, setAllHoldings] = useState([]);
 
-  useEffect(()=>{
-    axios.get("https://my-stock-backend.onrender.com/allHoldings").then((res)=>{
-      console.log(res.data);
-      setAllHoldings(res.data);
-    });
+  useEffect(() => {
+    axios
+      .get("https://my-stock-backend.onrender.com/allHoldings")
+      .then((res) => {
+        console.log(res.data);
+        setAllHoldings(res.data);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch holdings:", err);
+      });
   }, []);
 
   // const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  const labels = allHoldings.map((subArray)=> subArray["name"]);
+  const labels = allHoldings.map((subArray) => subArray["name"]);
 
   const data = {
     labels,
-    datasets:[
+    datasets: [
       {
-        label: 'Stock Price',
+        label: "Stock Price",
         data: allHoldings.map((stock) => stock.price),
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
-    ]
-  }
+    ],
+  };
 
   // export const data = {
   //   labels,
@@ -44,9 +48,6 @@ const Holdings = () => {
   //     },
   //   ],
   // };
-
-
-
 
   return (
     <>
@@ -72,7 +73,7 @@ const Holdings = () => {
             const dayClass = stock.isLoss ? "loss" : "profit";
 
             return (
-              <tr key={index} >
+              <tr key={index}>
                 <td>{stock.name}</td>
                 <td>{stock.qty}</td>
                 <td>{stock.avg.toFixed(2)}</td>
@@ -107,7 +108,7 @@ const Holdings = () => {
           <p>P&L</p>
         </div>
       </div>
-      <VerticalGraph data={data}/>
+      <VerticalGraph data={data} />
     </>
   );
 };
