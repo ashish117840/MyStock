@@ -195,6 +195,11 @@ app.use("/api/auth", authRoutes);
 //   res.send("Done!");
 // });
 
+// Add this
+app.get("/", (req, res) => {
+  res.send("✅ MyStock Backend is live and working!");
+});
+
 app.get("/allHoldings", async (req, res) => {
   let allHoldings = await HoldingsModel.find({});
   res.json(allHoldings);
