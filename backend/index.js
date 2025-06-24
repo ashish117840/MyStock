@@ -211,16 +211,44 @@ app.get("/allPositions", async (req, res) => {
 });
 
 app.post("/newOrder", async (req, res) => {
-  let newOrder = new OrdersModel({
-    name: req.body.name,
-    qty: req.body.qty,
-    price: req.body.price,
-    mode: req.body.mode,
-  });
+  const { name, qty, price, mode } = req.body;
 
-  newOrder.save();
+  try {
+    // Save the order
+    const newOrder = new OrdersModel({ name, qty, price, mode });
+    await newOrder.save();
 
-  res.send("Order saved!");
+    // Only handle BUY orders for now
+    if (mode === "BUY") {
+      const existing = await HoldingsModel.findOne({ name });
+
+      if (existing) {
+        // Update existing holding
+        const totalQty = existing.qty + qty;
+        const totalCost = existing.qty * existing.avg + qty * price;
+        existing.avg = totalCost / totalQty;
+        existing.qty = totalQty;
+        existing.price = price;
+        await existing.save();
+      } else {
+        // Create new holding
+        await HoldingsModel.create({
+          name,
+          qty,
+          avg: price,
+          price,
+          net: "+0.00%",
+          day: "+0.00%",
+          isLoss: false,
+        });
+      }
+    }
+
+    res.json({ message: "Order placed and holdings updated." });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Failed to place order." });
+  }
 });
 
 app.listen(PORT, async () => {
