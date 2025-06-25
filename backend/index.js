@@ -24,6 +24,9 @@ app.use(bodyParser.json());
 
 app.use("/api/auth", authRoutes);
 
+const stockRoutes = require("./routes/stockRoutes");
+app.use("/api/stocks", stockRoutes);
+
 
 
 // app.get("/addHoldings", async (req, res) => {
