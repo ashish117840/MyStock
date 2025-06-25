@@ -1,12 +1,20 @@
 const yahooFinance = require("yahoo-finance2").default;
 
-exports.getStockQuote = async (req, res) => {
-  const symbol = req.params.symbol; // e.g., "INFY.NS"
+const getQuotes = async (req, res) => {
   try {
-    const quote = await yahooFinance.quote(symbol);
-    res.json(quote);
+    const symbols = req.query.symbols?.split(","); // e.g., RELIANCE.NS,SBIN.NS
+    if (!symbols || symbols.length === 0) {
+      return res.status(400).json({ error: "No symbols provided" });
+    }
+
+    const result = await yahooFinance.quote(symbols);
+    res.json(result);
   } catch (error) {
-    console.error("Error fetching stock quote:", error);
-    res.status(500).json({ message: "Failed to fetch stock data" });
+    console.error("Yahoo API error:", error);
+    res.status(500).json({ error: "Failed to fetch stock data" });
   }
 };
+
+module.exports = { getQuotes };
+
+

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const stockController = require("../controllers/stockController");
+const { getQuotes } = require("../controllers/stockController");
 
-router.get("/quote/:symbol", stockController.getStockQuote);
+router.get("/quote", getQuotes);
 
 module.exports = router;
