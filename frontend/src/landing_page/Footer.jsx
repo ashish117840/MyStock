@@ -6,9 +6,9 @@ function Footer() {
       <div className="container border-top mt-5">
         <div className="row mt-5">
           <div className="col">
-            <img src="media/images/logo.svg" style={{ width: "50%" }} />
+            <img src="media/images/mystock.png" style={{ width: "50%" }} />
             <p>
-              &copy; 2010 - 2024, Not Zerodha Broking Ltd. All rights reserved.
+              &copy; 2010 - 2024,  MyStock Broking Ltd. All rights reserved.
             </p>
           </div>
           <div className="col" style={{textDecoration:"none"}}>
@@ -23,11 +23,11 @@ function Footer() {
             <br />
             <a href="">Careers</a>
             <br />
-            <a href="">Zerodha.tech</a>
+            <a href="">MyStock.tech</a>
             <br />
             <a href="">Press & media</a>
             <br />
-            <a href="">Zerodha cares (CSR)</a>
+            <a href="">MyStock cares (CSR)</a>
             <br />
           </div>
           <div className="col" style={{textDecoration:"none"}}>
@@ -56,15 +56,15 @@ function Footer() {
         </div>
         <div className="mt-5 text-muted" style={{ fontSize: "14px" }}>
           <p>
-            Zerodha Broking Ltd.: Member of NSE, BSE & MCX - SEBI Registration
-            no.: INZ000031633 CDSL/NSDL: Depository services through Zerodha
+            MyStock Broking Ltd.: Member of NSE, BSE & MCX - SEBI Registration
+            no.: INZ000031633 CDSL/NSDL: Depository services through MyStock
             Broking Ltd. - SEBI Registration no.: IN-DP-431-2019 Commodity
-            Trading through Zerodha Commodities Pvt. Ltd. MCX: 46025; NSE-50001
-            - SEBI Registration no.: INZ000038238 Registered Address: Zerodha
+            Trading through MyStock Commodities Pvt. Ltd. MCX: 46025; NSE-50001
+            - SEBI Registration no.: INZ000038238 Registered Address: MyStock
             Broking Ltd., #153/154, 4th Cross, Dollars Colony, Opp. Clarence
             Public School, J.P Nagar 4th Phase, Bengaluru - 560078, Karnataka,
             India. For any complaints pertaining to securities broking please
-            write to complaints@zerodha.com, for DP related to dp@zerodha.com.
+            write to complaints@zerodha.com, for DP related to dp@mystock.com.
             Please ensure you carefully read the Risk Disclosure Document as
             prescribed by SEBI | ICF
           </p>
@@ -94,7 +94,7 @@ function Footer() {
             of allotment. In case of non allotment the funds will remain in your
             bank account. As a business we don't give stock tips, and have not
             authorized anyone to trade on behalf of others. If you find anyone
-            claiming to be part of Zerodha and offering such services, please
+            claiming to be part of MyStock and offering such services, please
             create a ticket here.
           </p>
         </div>
