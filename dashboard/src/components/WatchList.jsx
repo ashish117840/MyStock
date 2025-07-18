@@ -11,14 +11,40 @@ import {
 import { DoughnoutChart } from "./DoughnoutChart";
 
 // Define your watchlist symbols here
-const stockSymbols = ["RELIANCE.NS", "HDFCBANK.NS", "TCS.NS", "INFY.NS", "SBIN.NS", "ITC.NS"];
+const stockSymbols = [
+  "RELIANCE.NS",
+  "TCS.NS",
+  "INFY.NS",
+  "HDFCBANK.NS",
+  "ICICIBANK.NS",
+  "SBIN.NS",
+  "ITC.NS",
+  "BHARTIARTL.NS",
+  "LT.NS",
+  "ASIANPAINT.NS",
+  "KOTAKBANK.NS",
+  "AXISBANK.NS",
+  "HINDUNILVR.NS",
+  "BAJFINANCE.NS",
+  "HCLTECH.NS",
+  "SUNPHARMA.NS",
+  "ULTRACEMCO.NS",
+  "WIPRO.NS",
+  "NESTLEIND.NS",
+  "MARUTI.NS"
+];
+
 
 const WatchList = () => {
   const [watchlist, setWatchlist] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`https://my-stock-backend.onrender.com/api/stocks/quote?symbols=${stockSymbols.join(",")}`)
+      .get(
+        `https://my-stock-backend.onrender.com/api/stocks/quote?symbols=${stockSymbols.join(
+          ","
+        )}`
+      )
       .then((res) => {
         const data = Array.isArray(res.data) ? res.data : [res.data];
         const formatted = data.map((stock) => ({
@@ -41,20 +67,20 @@ const WatchList = () => {
         label: "Price",
         data: watchlist.map((stock) => stock.price),
         backgroundColor: [
-          'rgba(255, 99, 132, 0.5)',
-          'rgba(54, 162, 235, 0.5)',
-          'rgba(255, 206, 86, 0.5)',
-          'rgba(75, 192, 192, 0.5)',
-          'rgba(153, 102, 255, 0.5)',
-          'rgba(255, 159, 64, 0.5)',
+          "rgba(255, 99, 132, 0.5)",
+          "rgba(54, 162, 235, 0.5)",
+          "rgba(255, 206, 86, 0.5)",
+          "rgba(75, 192, 192, 0.5)",
+          "rgba(153, 102, 255, 0.5)",
+          "rgba(255, 159, 64, 0.5)",
         ],
         borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)',
+          "rgba(255, 99, 132, 1)",
+          "rgba(54, 162, 235, 1)",
+          "rgba(255, 206, 86, 1)",
+          "rgba(75, 192, 192, 1)",
+          "rgba(153, 102, 255, 1)",
+          "rgba(255, 159, 64, 1)",
         ],
         borderWidth: 1,
       },
@@ -122,12 +148,24 @@ const WatchListActions = ({ uid }) => {
   return (
     <span className="actions">
       <Tooltip title="Buy (B)" placement="top" arrow TransitionComponent={Grow}>
-        <button className="buy" onClick={handleBuyClick}>Buy</button>
+        <button className="buy" onClick={handleBuyClick}>
+          Buy
+        </button>
       </Tooltip>
-      <Tooltip title="Sell (S)" placement="top" arrow TransitionComponent={Grow}>
+      <Tooltip
+        title="Sell (S)"
+        placement="top"
+        arrow
+        TransitionComponent={Grow}
+      >
         <button className="sell">Sell</button>
       </Tooltip>
-      <Tooltip title="Analytics (A)" placement="top" arrow TransitionComponent={Grow}>
+      <Tooltip
+        title="Analytics (A)"
+        placement="top"
+        arrow
+        TransitionComponent={Grow}
+      >
         <button className="action">
           <BarChartOutlined className="icon" />
         </button>

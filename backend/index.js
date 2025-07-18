@@ -8,7 +8,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const authRoutes = require("./routes/authRoutes");
-
+const paymentRoutes = require('./routes/paymentRoutes');
 const { HoldingsModel } = require("./model/HoldingsModel");
 
 const { PositionsModel } = require("./model/PositionsModel");
@@ -21,7 +21,7 @@ const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
-
+app.use('/api/payment', paymentRoutes);
 app.use("/api/auth", authRoutes);
 
 const stockRoutes = require("./routes/stockRoutes");
