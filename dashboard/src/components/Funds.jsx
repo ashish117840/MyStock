@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PaymentButton from "./PaymentButton";
 
 const Funds = () => {
   return (
@@ -78,6 +79,7 @@ const Funds = () => {
           <div className="commodity">
             <p>You don't have a commodity account</p>
             <Link className="btn btn-blue">Open Account</Link>
+            {/* <PaymentButton amount={500}/> */}
           </div>
         </div>
       </div>
