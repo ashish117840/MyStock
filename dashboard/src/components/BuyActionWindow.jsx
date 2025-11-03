@@ -11,23 +11,40 @@ const BuyActionWindow = ({ uid }) => {
   const [stockQuantity, setStockQuantity] = useState(1);
   const [stockPrice, setStockPrice] = useState(0.0);
 
-  const handleBuyClick = () => {
-    axios
-      .post("https://my-stock-backend.onrender.com/newOrder", {
-        name: uid,
-        qty: stockQuantity,
-        price: stockPrice,
-        mode: "BUY",
-      })
-      .then(() => {
-        GeneralContext.closeBuyWindow();
-        window.location.reload(); 
-      })
-      .catch((err) => {
-        console.error("Failed to place order:", err);
-      });
+  const handleBuyClick = async () => {
+    const base = 'https://my-stock-backend.onrender.com';
+    const payload = {
+      name: uid,
+      qty: Number(stockQuantity),
+      price: Number(stockPrice),
+      mode: "BUY",
+    };
 
-    
+    try {
+      await axios.post(`${base}/newOrder`, payload);
+      GeneralContext.closeBuyWindow();
+      window.location.reload();
+      return;
+    } catch (err) {
+      console.error("/newOrder failed, trying /holdings fallback:", err.response?.data || err.message);
+    }
+
+    try {
+      await axios.post(`${base}/holdings`, {
+        name: payload.name,
+        qty: payload.qty,
+        avg: payload.price,
+        price: payload.price,
+        net: "+0.00%",
+        day: "+0.00%",
+        isLoss: false,
+      });
+      GeneralContext.closeBuyWindow();
+      window.location.reload();
+    } catch (err2) {
+      console.error("Both buy attempts failed:", err2.response?.data || err2.message);
+      alert(err2.response?.data?.message || "Failed to place order");
+    }
   };
 
   const handleCancelClick = () => {
