@@ -11,6 +11,6 @@ const HoldingsSchema = new Schema({
   day: String,
 });
 
-const HoldingsModel = new model("holding", HoldingsSchema);
+const HoldingsModel = new model("holdings", HoldingsSchema);
 
 module.exports = {HoldingsModel};
