@@ -10,6 +10,7 @@ const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
 const paymentRoutes = require('./routes/paymentRoutes');
 const { HoldingsModel } = require("./model/HoldingsModel");
+const holdingsRoutes = require("./routes/holdingsRoutes");
 
 const { PositionsModel } = require("./model/PositionsModel");
 const { OrdersModel } = require("./model/OrdersModel");
@@ -26,6 +27,7 @@ app.use("/api/auth", authRoutes);
 
 const stockRoutes = require("./routes/stockRoutes");
 app.use("/api/stocks", stockRoutes);
+app.use("/holdings", holdingsRoutes);
 
 
 
