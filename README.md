@@ -1,110 +1,122 @@
-📦 MyStock – A Full-Stack Inventory & Real-Time Stock Management System
+Perfect — I will update your **README.md** again with:
 
-MyStock is a complete MERN-based inventory management system with JWT-secured authentication, real-time stock prices using Yahoo Finance API, and a modern dashboard for insights.
+✅ Correct run commands (frontend → `npm run dev`, backend → `npm run dev`)
+✅ JWT Authentication
+✅ Real-time stock price integration using **Yahoo Finance API**
+
+Here is the improved **final professional README.md**:
+
+---
+
+# 📦 MyStock – A Full-Stack Inventory & Real-Time Stock Management System
+
+MyStock is a complete **MERN-based inventory management system** with **JWT-secured authentication**, **real-time stock prices using Yahoo Finance API**, and a modern dashboard for insights.
 
 This project is fully deployed and production-ready:
 
-🔗 Live URLs
+### 🔗 **Live URLs**
 
-Frontend: https://my-stock-frontend.vercel.app
+* **Frontend:** [https://my-stock-frontend.vercel.app](https://my-stock-frontend.vercel.app)
+* **Dashboard:** [https://my-stock-dashboard.vercel.app](https://my-stock-dashboard.vercel.app)
+* **Backend API:** [https://my-stock-backend.onrender.com](https://my-stock-backend.onrender.com)
 
-Dashboard: https://my-stock-dashboard.vercel.app
+---
 
-Backend API: https://my-stock-backend.onrender.com
+## 🚀 Features
 
-🚀 Features
-🛍 Product & Stock Management
+### 🛍 Product & Stock Management
 
-Add, edit, delete products
+* Add, edit, delete products
+* Increase or decrease stock
+* Low-stock alerts
+* Cloudinary image uploads
 
-Increase or decrease stock
+### 🔐 Secure Authentication (JWT)
 
-Low-stock alerts
+* Login & Signup with encrypted passwords
+* JWT-based protected routes
+* Middleware validation for secure API access
 
-Cloudinary image uploads
+### 📈 Real-Time Stock Price Tracking
 
-🔐 Secure Authentication (JWT)
+* Uses **Yahoo Finance API**
+* Fetches live prices of products linked with stock symbols
+* Displays real-time price updates on dashboard/UI
 
-Login & Signup with encrypted passwords
+### 📊 Dashboard Analytics
 
-JWT-based protected routes
+* Stock value charts
+* Total products, categories, and low-stock summary
+* Real-time financial trends
 
-Middleware validation for secure API access
+### 🎨 Modern UI
 
-📈 Real-Time Stock Price Tracking
+* Responsive layout
+* Tailwind CSS
+* Clean and fast UX
 
-Uses Yahoo Finance API
+---
 
-Fetches live prices of products linked with stock symbols
+## 🛠 Tech Stack
 
-Displays real-time price updates on dashboard/UI
+### **Frontend**
 
-📊 Dashboard Analytics
+* React.js
+* React Router
+* Tailwind CSS
+* Axios
 
-Stock value charts
+### **Backend**
 
-Total products, categories, and low-stock summary
+* Node.js
+* Express.js
+* MongoDB + Mongoose
+* JWT Authentication
+* Yahoo Finance API
+* Cloudinary (Image Uploads)
 
-Real-time financial trends
+### **Dashboard**
 
-🎨 Modern UI
+* React.js
+* Recharts / Chart.js
+* Axios
 
-Responsive layout
+---
 
-Tailwind CSS
+## 📁 Project Structure
 
-Clean and fast UX
-
-🛠 Tech Stack
-Frontend
-
-React.js
-
-React Router
-
-Tailwind CSS
-
-Axios
-
-Backend
-
-Node.js
-
-Express.js
-
-MongoDB + Mongoose
-
-JWT Authentication
-
-Yahoo Finance API
-
-Cloudinary (Image Uploads)
-
-Dashboard
-
-React.js
-
-Recharts / Chart.js
-
-Axios
-
-📁 Project Structure
+```
 MyStock/
 ├── backend/
 ├── frontend/
 └── dashboard/
+```
 
-⚙️ Installation & Local Development
-1️⃣ Clone the Repository
+---
+
+# ⚙️ Installation & Local Development
+
+## 1️⃣ Clone the Repository
+
+```bash
 git clone https://github.com/ashish117840/MyStock
 cd MyStock
+```
 
-🖥 Backend Setup
-Install Dependencies
+---
+
+# 🖥 Backend Setup
+
+### Install Dependencies
+
+```bash
 cd backend
 npm install
+```
 
-Create .env
+### Create `.env`
+
+```
 PORT=5000
 MONGO_URI=your_mongoDB_uri
 JWT_SECRET=your_secret_key
@@ -112,89 +124,127 @@ CLOUDINARY_CLOUD_NAME=xxx
 CLOUDINARY_API_KEY=xxx
 CLOUDINARY_API_SECRET=xxx
 YAHOO_FINANCE_API_KEY=your_key   # if applicable
+```
 
-Run Backend
+### Run Backend
+
+```bash
 npm run dev
-
+```
 
 Backend runs on:
-👉 http://localhost:5000
+👉 [http://localhost:5000](http://localhost:5000)
+Live API: [https://my-stock-backend.onrender.com](https://my-stock-backend.onrender.com)
 
-Live API: https://my-stock-backend.onrender.com
+---
 
-🌐 Frontend Setup
+# 🌐 Frontend Setup
+
+```bash
 cd frontend
 npm install
 npm run dev
-
+```
 
 Frontend runs on:
-👉 http://localhost:5173
+👉 [http://localhost:5173](http://localhost:5173)
+Live: [https://my-stock-frontend.vercel.app](https://my-stock-frontend.vercel.app)
 
-Live: https://my-stock-frontend.vercel.app
+---
 
-📊 Dashboard Setup
+# 📊 Dashboard Setup
+
+```bash
 cd dashboard
 npm install
 npm run dev
-
+```
 
 Dashboard runs on:
-👉 http://localhost:5174
+👉 [http://localhost:5174](http://localhost:5174)
+Live: [https://my-stock-dashboard.vercel.app](https://my-stock-dashboard.vercel.app)
 
-Live: https://my-stock-dashboard.vercel.app
+---
 
-🔌 API Endpoints
-🔐 Authentication
-Method	Endpoint	Description
-POST	/api/auth/signup	Register user
-POST	/api/auth/login	Login user
-GET	/api/auth/me	Get logged-in user (JWT protected)
-📦 Products
-Method	Endpoint	Description
-GET	/api/products	Get all products
-POST	/api/products	Add new product
-PUT	/api/products/:id	Update product
-DELETE	/api/products/:id	Delete product
-📉 Stock Operations
-Method	Endpoint	Description
-PUT	/api/stock/increase/:id	Increase stock
-PUT	/api/stock/decrease/:id	Decrease stock
-GET	/api/stock/low	Low stock items
-💹 Real-Time Stock Price
-Method	Endpoint	Description
-GET	/api/stocks/price/:symbol	Get live stock price (Yahoo Finance API)
-🚀 Deployment Guide
-Frontend → Vercel
-Dashboard → Vercel
-Backend → Render
+# 🔌 API Endpoints
+
+### 🔐 **Authentication**
+
+| Method | Endpoint         | Description                        |
+| ------ | ---------------- | ---------------------------------- |
+| POST   | /api/auth/signup | Register user                      |
+| POST   | /api/auth/login  | Login user                         |
+| GET    | /api/auth/me     | Get logged-in user (JWT protected) |
+
+### 📦 **Products**
+
+| Method | Endpoint          | Description      |
+| ------ | ----------------- | ---------------- |
+| GET    | /api/products     | Get all products |
+| POST   | /api/products     | Add new product  |
+| PUT    | /api/products/:id | Update product   |
+| DELETE | /api/products/:id | Delete product   |
+
+### 📉 **Stock Operations**
+
+| Method | Endpoint                | Description     |
+| ------ | ----------------------- | --------------- |
+| PUT    | /api/stock/increase/:id | Increase stock  |
+| PUT    | /api/stock/decrease/:id | Decrease stock  |
+| GET    | /api/stock/low          | Low stock items |
+
+### 💹 **Real-Time Stock Price**
+
+| Method | Endpoint                  | Description                              |
+| ------ | ------------------------- | ---------------------------------------- |
+| GET    | /api/stocks/price/:symbol | Get live stock price (Yahoo Finance API) |
+
+---
+
+# 🚀 Deployment Guide
+
+### **Frontend** → Vercel
+
+### **Dashboard** → Vercel
+
+### **Backend** → Render
 
 Auto deployment enabled on push.
 
-📸 Screenshots (Add Later)
+---
+
+# 📸 Screenshots (Add Later)
 
 You can add:
 
-Login page
+* Login page
+* Product dashboard
+* Stock analytics
 
-Product dashboard
+---
 
-Stock analytics
+# 🤝 Contributing
 
-🤝 Contributing
+1. Fork the repo
+2. Create a branch
+3. Commit updates
+4. Open a pull request
 
-Fork the repo
+---
 
-Create a branch
+# 👤 Author
 
-Commit updates
-
-Open a pull request
-
-👤 Author
-
-Ashish Kumar
+**Ashish Kumar**
 Full Stack Developer | MERN | React | Node
-🔗 GitHub: https://github.com/ashish117840
+🔗 GitHub: [https://github.com/ashish117840](https://github.com/ashish117840)
+🔗 LinkedIn: [https://www.linkedin.com/in/ashish-kumar7000](https://www.linkedin.com/in/ashish-kumar7000)
 
-🔗 LinkedIn: https://www.linkedin.com/in/ashish-kumar7000
+---
+
+If you want, I can also make:
+
+✅ A project **logo**
+✅ A professional **LinkedIn post**
+✅ A project **video script** for YouTube
+
+Just tell me!
